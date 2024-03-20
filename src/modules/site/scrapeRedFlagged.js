@@ -1,5 +1,4 @@
 function scrapeRedFlagged(callback) {
-  console.log(`scrapeRedFlagged Called`)
   const tweets = document.querySelectorAll(
     '[data-testid="User-Name"]:not(.redflagged-checked)'
   );

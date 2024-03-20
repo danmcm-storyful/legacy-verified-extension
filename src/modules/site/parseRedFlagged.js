@@ -1,8 +1,6 @@
 import verify from './verify.js';
 
 function parseRedFlagged(nodes, type, data) {
-  console.log(`parsedRedFlagged called`)
-
   switch (type) {
     case 'tweets':
       nodes.forEach((tweet) => {

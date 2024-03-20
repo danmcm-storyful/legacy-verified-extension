@@ -1,5 +1,4 @@
 function scrapeLegacy(callback) {
-  console.log(`scrapeLegacy called`)
   const tweets = document.querySelectorAll(
     '[data-testid="User-Name"]:not(.legacy-checked)'
   );

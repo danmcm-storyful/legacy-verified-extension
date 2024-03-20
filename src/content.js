@@ -5,8 +5,8 @@ import styler from './modules/site/styler.js';
 import watcher from './modules/site/mutation.js';
 import scrapeLegacy from './modules/site/scrapeLegacy.js';
 import scrapeRedFlagged from './modules/site/scrapeRedFlagged.js';
-import parsedLegacy from './modules/site/parseLegacy.js';
-import parsedRedFlagged from './modules/site/parseLegacy.js';
+import parseLegacy from './modules/site/parseLegacy.js';
+import parseRedFlagged from './modules/site/parseRedFlagged.js';
 import assets from './modules/site/assets';
 
 async function init() {
@@ -15,11 +15,11 @@ async function init() {
 
   watcher(() => {
     scrapeLegacy((nodes, type) => {
-      parsedLegacy(nodes, type, organicallyVerifiedUsers);
+      parseLegacy(nodes, type, organicallyVerifiedUsers);
     });
     scrapeRedFlagged((nodes, type) => {
-      parsedRedFlagged(nodes, type, redFlaggedUsers);
-    })
+      parseRedFlagged(nodes, type, redFlaggedUsers);
+    });
   });
 }
 
