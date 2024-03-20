@@ -1,17 +1,19 @@
 import verify from './verify.js';
 
-function parse(nodes, type, data) {
+function parseRedFlagged(nodes, type, data) {
+  console.log(`parsedRedFlagged called`)
+
   switch (type) {
     case 'tweets':
       nodes.forEach((tweet) => {
-        tweet.classList.add('legacy-checked');
+        tweet.classList.add('redflagged-checked');
 
         const author = tweet.lastChild
           .querySelector('span')
           .textContent.substring(1);
 
         if (verify(data, author, 1)) {
-          tweet.firstChild.classList.add('legacy-verified');
+          tweet.firstChild.classList.add('redflagged-verified');
         }
       });
 
@@ -21,12 +23,12 @@ function parse(nodes, type, data) {
       const userNameNode = document.querySelector('[data-testid="UserName"]');
 
       if (userNameNode && userData) {
-        nodes.classList.add('legacy-checked');
+        nodes.classList.add('redflagged-checked');
 
         const author = userData.author.identifier.toString();
 
         if (verify(data, author, 0)) {
-          userNameNode.querySelector('span').classList.add('legacy-verified');
+          userNameNode.querySelector('span').classList.add('redflagged-verified');
         }
       }
 
@@ -36,26 +38,26 @@ function parse(nodes, type, data) {
       const link = nodes.querySelector('a:not([tabindex="-1"])');
 
       if (link) {
-        nodes.classList.add('legacy-checked');
+        nodes.classList.add('redflagged-checked');
 
         const author = link.getAttribute('href').substring(1);
 
         if (verify(data, author, 1)) {
-          link.querySelector('div').classList.add('legacy-verified');
+          link.querySelector('div').classList.add('redflagged-verified');
         }
       }
 
       break;
     case 'cell':
       nodes.forEach((cell) => {
-        cell.classList.add('legacy-checked');
+        cell.classList.add('redflagged-checked');
         const link = cell.querySelector('a:not([aria-hidden="true"])');
 
         if (link) {
           const author = link.getAttribute('href').substring(1);
 
           if (verify(data, author, 1)) {
-            link.querySelector('div').classList.add('legacy-verified');
+            link.querySelector('div').classList.add('redflagged-verified');
           }
         } else {
           // This is most likely a search node.
@@ -71,7 +73,7 @@ function parse(nodes, type, data) {
               const container =
                 span.querySelector('div[dir="ltr"]')?.parentNode;
 
-              container.classList.add('legacy-verified');
+              container.classList.add('redflagged-verified');
             }
           }
         }
@@ -83,4 +85,4 @@ function parse(nodes, type, data) {
   }
 }
 
-export default parse;
+export default parseRedFlagged;

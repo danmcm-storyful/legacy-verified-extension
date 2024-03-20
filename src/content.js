@@ -3,16 +3,23 @@
 import loader from './modules/site/loader.js';
 import styler from './modules/site/styler.js';
 import watcher from './modules/site/mutation.js';
-import scrape from './modules/site/scrape.js';
-import parse from './modules/site/parse.js';
+import scrapeLegacy from './modules/site/scrapeLegacy.js';
+import scrapeRedFlagged from './modules/site/scrapeRedFlagged.js';
+import parsedLegacy from './modules/site/parseLegacy.js';
+import parsedRedFlagged from './modules/site/parseLegacy.js';
+import assets from './modules/site/assets';
 
 async function init() {
-  const data = await loader();
+  const organicallyVerifiedUsers = await loader(assets.dataUrl);
+  const redFlaggedUsers = await loader(assets.redFlagDataUrl);
 
   watcher(() => {
-    scrape((nodes, type) => {
-      parse(nodes, type, data);
+    scrapeLegacy((nodes, type) => {
+      parsedLegacy(nodes, type, organicallyVerifiedUsers);
     });
+    scrapeRedFlagged((nodes, type) => {
+      parsedRedFlagged(nodes, type, redFlaggedUsers);
+    })
   });
 }
 

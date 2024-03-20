@@ -14,7 +14,7 @@
     "default_popup": "popup.html"
   },
   "web_accessible_resources": [{
-    "resources": ["/icons/*.png", "legacy-verified.csv"],
+    "resources": ["/icons/*.png", "legacy-verified.csv", "red-flagged.csv"],
     "matches": ["*://twitter.com/*", "*://*.twitter.com/*"]
   }],
   "content_scripts": [
@@ -36,10 +36,5 @@
         "content.js"
       ]
     }
-  ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "legacy-verified@robertspier.nl"
-    }
-  }
+  ]
 }

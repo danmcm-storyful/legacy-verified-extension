@@ -1,7 +1,7 @@
 {
-  "name": "legacy-verified-extension",
-  "version": "1.0.2",
-  "description": "Legacy Verified Extension",
+  "name": "legacy-verified-extension-modded",
+  "version": "1.0.3",
+  "description": "Legacy Verified Extension Modded",
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",

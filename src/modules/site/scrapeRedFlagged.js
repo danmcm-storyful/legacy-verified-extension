@@ -1,18 +1,19 @@
-function scrape(callback) {
+function scrapeRedFlagged(callback) {
+  console.log(`scrapeRedFlagged Called`)
   const tweets = document.querySelectorAll(
-    '[data-testid="User-Name"]:not(.legacy-checked)'
+    '[data-testid="User-Name"]:not(.redflagged-checked)'
   );
 
   const scheme = document.querySelector(
-    'script[type="application/ld+json"]:not(.legacy-checked)'
+    'script[type="application/ld+json"]:not(.redflagged-checked)'
   );
 
   const card = document.querySelector(
-    '[data-testid="HoverCard"] > div:not(.legacy-checked) '
+    '[data-testid="HoverCard"] > div:not(.redflagged-checked) '
   );
 
   const cell = document.querySelectorAll(
-    '[data-testid="UserCell"]:not(.legacy-checked)'
+    '[data-testid="UserCell"]:not(.redflagged-checked)'
   );
 
   if (tweets.length > 0) {
@@ -32,4 +33,4 @@ function scrape(callback) {
   }
 }
 
-export default scrape;
+export default scrapeRedFlagged;

@@ -1,9 +1,8 @@
 import Papa from 'papaparse';
-import assets from './assets';
 
-async function loader() {
+async function loader(csvData) {
   return new Promise((resolve, reject) => {
-    Papa.parse(assets.dataUrl, {
+    Papa.parse(csvData, {
       download: true,
       dynamicTyping: true,
       complete: (results) => {
